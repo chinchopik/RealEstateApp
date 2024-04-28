@@ -1,0 +1,39 @@
+﻿@using RealEstateApp.Domain.Entities;
+@model RealEstate
+@{
+
+}
+
+<label>@Model.Id</label>
+<label>@Model.Price</label>
+<label>@Model.Address</label>
+
+<div class="estate" data-id>
+	<div class="form-check d-flex align-items-center">
+		<label>huy</label>
+		<label class="form-label" asp-for="Id">@Model.Id</label>
+		<label class="form-label" asp-for="Address">@Model.Address</label>
+		<label class="form-label" asp-for="Price">@Model.Price</label>
+		<label class="form-label" asp-for="Id">@Model.Id</label>
+		<label class="form-label" asp-for="Address">@Model.Address</label>
+		<label class="form-label" asp-for="Price">@Model.Price</label>
+	</div>
+</div>
+<form asp-action="GetRealEstate" asp-controller="RealEstate">
+	<p>huy</p>
+	<div class="bg-red w-110 h-10">
+		<p>huy</p>
+		<div class="form-check d-flex align-items-center">
+			<label>huy</label>
+			<label class="form-label" asp-for="Id">@Model.Id</label>
+			<label class="form-label" asp-for="Address">@Model.Address</label>
+			<label class="form-label" asp-for="Price">@Model.Price</label>
+			<label class="form-label" asp-for="Id">@Model.Id</label>
+			<label class="form-label" asp-for="Address">@Model.Address</label>
+			<label class="form-label" asp-for="Price">@Model.Price</label>
+		</div>
+	</div>
+</form>
+
+
+

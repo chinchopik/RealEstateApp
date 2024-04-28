@@ -1,0 +1,12 @@
+﻿@using RealEstateApp.Models.RealEstateList;
+@model RealEstateViewModel
+@{
+    ViewData["Title"] = "RealEstateEmpty";
+}
+<p>negr</p>
+
+
+@foreach (var estate in Model.RealEstates)
+{
+    @await Component.InvokeAsync("RealEstate", estate);
+}
