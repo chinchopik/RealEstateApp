@@ -1,0 +1,7 @@
+﻿@using RealEstateApp.Models.User;
+@model UserViewModel
+
+@{
+	ViewData.TemplateInfo.HtmlFieldPrefix = "l";
+	await Html.RenderPartialAsync("_Login", Model?.LoginViewModel);
+}
