@@ -3,10 +3,58 @@
 @{
     ViewData["Title"] = "RealEstateEmpty";
 }
-<p>negr</p>
+
+<div class="shadow rounded p-3 mt-5 bg-white">
+    <form asp-action="Create">
+        <div class="row">
+            <div class="col-7">
+                <div class="form-floating">
+                    <input asp-for="Address"
+                    type="text"
+                    class="form-control shadow-sm rounded"
+                    placeholder="Адрес объекта">
+                    <label asp-for="Address">Адрес объекта</label>
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+                <div class="text-danger">@ViewBag.Error</div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-floating">
+                    <input asp-for="Price"
+                    type="number"
+                    min="1"
+                    step="any"
+                    class="form-control shadow-sm rounded"
+                    placeholder="Цена объекта">
+                    <label asp-for="Price">Цена объекта</label>
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="col-1 align-items-between d-flex">
+                <button class="btn btn-success d-flex shadows rounded"
+                        type="submit"
+                        style="text-align:center; margin:auto;"                        
+                        data-bs-title="Добавить"
+                        data-bs-toggle="tooltip">Добавить                        
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 
-@foreach (var estate in Model.RealEstates)
-{
-    @await Component.InvokeAsync("RealEstate", estate);
+<hr/>
+<div class="estates">
+    @foreach (var estate in Model.RealEstates)
+    {
+        @await Component.InvokeAsync("RealEstate", estate);
+    }
+</div>
+
+
+@section Scripts {
+    <script src="~/js/components/realEstateItem/Default.js"></script>
 }
+
