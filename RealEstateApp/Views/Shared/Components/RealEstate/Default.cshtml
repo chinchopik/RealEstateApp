@@ -4,18 +4,18 @@
 
 }
 
-<div class="estate align-items-center p-3 mt-3 rounded d-flex justify-content-between border border-success" data-id="@Model.Id">
-	<div class="form-check d-flex justify-content-around align-items-center">
+<div class="estate align-items-center p-3 mt-3 rounded d-flex justify-content-start border border-success" data-id="@Model.Id">
+	<div class="d-flex align-items-center col-1">
 		<label class="form-label" asp-for="Id">@Model.Id</label>
 	</div>
-	<div>
+	<div class="col-5">
 		<label class="form-label" asp-for="Address">@Model.Address</label>
 	</div>
-	<div>
+	<div class ="col-4">
 		<label class="form-label" asp-for="Price">@Model.Price</label>
 	</div>
 	<div>
-		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-placement="top" title="Редактировать">Редактировать
+		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">Редактировать
 			</button>
 		<form asp-controller="RealEstate" asp-action="Delete">
 			@Html.HiddenFor(m=>m.Id)
@@ -28,16 +28,22 @@
 <!-- Модальное окно -->
 <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="@Model.Id">
 	<form asp-controller="RealEstate" asp-action="Update">
-		<div class="modal-dialog">
-			<div class="modal-content">
+		<div class="modal-dialog d-flex justify-content-center">
+			<div class="modal-content m-5 d-flex">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
 				</div>
 				<div class="modal-body">
-					<span></span>
-					<div class="form-floating">
-						<input type="text"
+					<div class="form-floating disabled mb-3">
+						<input type="text" asp-for="Id"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Идентификатор объекта"
+							   id="IdEstate" readonly>
+						<label asp-for="Id">Идентификатор объекта</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" asp-for="Address"
 							   class="form-control shadow-sm rounded"
 							   placeholder="Адрес объекта"
 							   id="AddressInput">
@@ -45,8 +51,8 @@
 					</div>
 					<span asp-validation-for="Address" class="text-danger"></span>
 					<div class="text-danger">@ViewBag.Error</div>
-					<div class="form-floating">
-						<input 
+					<div class="form-floating mb-3">
+						<input asp-for="Price"
 							   type="number"
 							   min="1"
 							   step="any"
@@ -58,13 +64,14 @@
 					<span asp-validation-for="Price" class="text-danger"></span>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-					<button type="sumbit" class="btn btn-primary">Сохранить изменения</button>
+					<button type="button" class="btn btn-secondary p-2" data-bs-dismiss="modal">Закрыть</button>
+					<button type="sumbit" class="btn btn-success">Сохранить изменения</button>
 				</div>
 			</div>
 		</div>
 		</form>
 </div>
+
 
 
 

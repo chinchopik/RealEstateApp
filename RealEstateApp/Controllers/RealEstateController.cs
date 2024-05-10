@@ -25,6 +25,11 @@ namespace RealEstateApp.Controllers
             return await _context.RealEstates.ToListAsync();
         }
 
+        public async Task<RealEstate> GetRealEstateAsync(int id)
+        {
+            return await _context.RealEstates.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<IActionResult> CreateAsync(RealEstateViewModel realEstateViewModel)
         {
             if (!ModelState.IsValid)
