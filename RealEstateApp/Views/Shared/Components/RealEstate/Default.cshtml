@@ -5,11 +5,11 @@
 }
 
 <div class="estate align-items-center p-3 mt-3 rounded d-flex justify-content-start border border-success" data-id="@Model.Id">
-	<div class="d-flex align-items-center col-1">
+	<div class="d-flex align-items-center col-2">
 		<label class="form-label" asp-for="Id">@Model.Id</label>
 	</div>
 	<div class="col-5">
-		<label class="form-label" asp-for="Address">@Model.Address</label>
+		<label class="form-label text-break" asp-for="Address">@Model.Address</label>
 	</div>
 	<div class ="col-4">
 		<label class="form-label" asp-for="Price">@Model.Price</label>

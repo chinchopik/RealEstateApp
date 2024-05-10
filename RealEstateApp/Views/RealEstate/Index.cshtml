@@ -43,9 +43,51 @@
         </div>
     </form>
 </div>
-
+<hr/>
+<h1>Поиск</h1>
+<div class="shadow rounded p-3 bg-white">
+    <div>
+        <form asp-action="Search">
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-floating">
+                        <input asp-for="Address"
+                               type="text"
+                               class="form-control shadow-sm rounded"
+                               placeholder="Адрес объекта">
+                        <label asp-for="Address">Адрес объекта</label>
+                    </div>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                    <div class="text-danger">@ViewBag.Error</div>
+                </div>
+                <div class="dropdown col-3 d-flex">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="estateTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Тип объекта
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="estateTypeDropdown">
+                        <a class="dropdown-item" href="#">Квартира</a>
+                        <a class="dropdown-item" href="#">Земельный участок</a>
+                        <a class="dropdown-item" href="#">Дом</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <hr/>
+
+<div class="estate align-items-center p-3 mt-3 rounded d-flex justify-content-start border-bottom" data-id="@Model.Id">
+    <div class="d-flex align-items-center col-2">
+        <label class="form-label">Идентификатор</label>
+    </div>
+    <div class="col-5">
+        <label class="form-label">Адрес объекта</label>
+    </div>
+    <div class="col-4">
+        <label class="form-label">Цена объекта</label>
+    </div>
+ </div>
 <div class="estates">
     @foreach (var estate in Model.RealEstates)
     {
@@ -56,6 +98,8 @@
 
 
 @section Scripts {
+    <script type="text/javascript" src="~/lib/jquery/jquery.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/components/realEstateItem/Default.js"></script>
 }
 
