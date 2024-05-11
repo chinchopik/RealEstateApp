@@ -1,38 +1,5 @@
-﻿/*$(function () {
-    $(".edit").click(function () {
-        $('#AddressInput').val($(this).data('address'));
-        $('#PriceInput').val($(this).data('id'));
-        $("#exampleModal").modal("show");
-    });
-});
-
-const estates = document.querySelectorAll('.estate');
-*//*alert(estates.length);*//*
-estates.forEach(estate => {
-    const id = estate.dataset.id;
-    let editBtn = estate.querySelector('.edit');
-    editBtn.addEventListener('click', () => {
-*//*        alert("aboba");*//*
-
-        var exampleModal = document.getElementById('exampleModal');
-        $('.modal-body').val(id);
-*//*        alert(id);*//*
-        *//*exampleModal.addEventListener('show.bs.modal', function (e) {
-            var button = e.target;
-            alert("aboba1");
-            var modalBody = exampleModal.querySelector('.modal-body input');
-            modalBody.val = estate;
-            alert("aboba2");
-            console.log(e.target);
-            $(#exampleModal).click(function(){
-                $
-            }
-        });*//*
-        alert(modalBody);*//*
-    });
-});
-*/
-$('#exampleModal').on('shown.bs.modal', function (event) {
+﻿$('#exampleModal').on('shown.bs.modal', function (event) {
+    alert("1")
     let button = event.relatedTarget
     let userId = button.id
     if (userId) {
@@ -49,4 +16,29 @@ $('#exampleModal').on('shown.bs.modal', function (event) {
             }
         });
     }
-})
+});
+$(function () {
+    $("#drop").change(function () {
+        var value = this.value;
+        if (value == '') {
+
+        }
+        else if (value == '1') {
+            $("#areaDiv").show();
+            $("#floorsDiv").show();
+            $("#roomsDiv").show();
+        }
+        else if (value == '2') {
+            $("#areaDiv").hide();
+        }
+        else if (value == '3') {
+            $("#areaDiv").hide();
+            $("#floorsDiv").hide();
+        }
+    });
+});
+/*
+$('.dropdown').on('click', function (event) {
+    alert(event.data)
+    $($(this).attr('data-dropdown-target')).dropdown('toggle')
+})*/

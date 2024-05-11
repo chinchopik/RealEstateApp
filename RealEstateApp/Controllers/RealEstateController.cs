@@ -15,9 +15,18 @@ namespace RealEstateApp.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> IndexAsync(string searchString)
         {
-            return View(new RealEstateViewModel { RealEstates = await GetRealEstatesAsync() });
+            if (String.IsNullOrEmpty(searchString))
+            {
+                return View(new RealEstateViewModel { RealEstates = await GetRealEstatesAsync() });
+            }
+            else
+            {
+                var realEstates = new RealEstateViewModel { RealEstates = await GetRealEstatesAsync() };
+                var query = realEstates.RealEstates.Where(p => p.Address.Contains(searchString)).ToList();
+                return View(new RealEstateViewModel { RealEstates = query});
+            }
         }
 
         public async Task<IEnumerable<RealEstate>> GetRealEstatesAsync()

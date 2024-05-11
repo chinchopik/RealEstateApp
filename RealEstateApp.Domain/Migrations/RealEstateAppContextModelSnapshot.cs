@@ -25,16 +25,24 @@ namespace RealEstateApp.Domain.Migrations
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Agent", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("DealShare")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -69,9 +77,24 @@ namespace RealEstateApp.Domain.Migrations
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Client", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Patronymic")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -144,31 +167,6 @@ namespace RealEstateApp.Domain.Migrations
                     b.ToTable("Lands");
                 });
 
-            modelBuilder.Entity("RealEstateApp.Domain.Entities.Person", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Patronymic")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("People");
-                });
-
             modelBuilder.Entity("RealEstateApp.Domain.Entities.RealEstate", b =>
                 {
                     b.Property<int>("Id")
@@ -189,38 +187,6 @@ namespace RealEstateApp.Domain.Migrations
                     b.ToTable("RealEstates");
                 });
 
-            modelBuilder.Entity("RealEstateApp.Domain.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("RealEstateApp.Domain.Entities.Agent", b =>
-                {
-                    b.HasOne("RealEstateApp.Domain.Entities.Person", "Person")
-                        .WithMany("Agents")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
-                });
-
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Apartment", b =>
                 {
                     b.HasOne("RealEstateApp.Domain.Entities.RealEstate", "RealEstate")
@@ -230,17 +196,6 @@ namespace RealEstateApp.Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("RealEstate");
-                });
-
-            modelBuilder.Entity("RealEstateApp.Domain.Entities.Client", b =>
-                {
-                    b.HasOne("RealEstateApp.Domain.Entities.Person", "Person")
-                        .WithMany("Clients")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.Deal", b =>
@@ -290,13 +245,6 @@ namespace RealEstateApp.Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("RealEstate");
-                });
-
-            modelBuilder.Entity("RealEstateApp.Domain.Entities.Person", b =>
-                {
-                    b.Navigation("Agents");
-
-                    b.Navigation("Clients");
                 });
 
             modelBuilder.Entity("RealEstateApp.Domain.Entities.RealEstate", b =>

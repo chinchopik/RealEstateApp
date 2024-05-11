@@ -18,7 +18,7 @@ namespace RealEstateApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Catalog()
         {
             return View();
         }

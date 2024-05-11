@@ -23,7 +23,7 @@ namespace RealEstateApp.Controllers
 			{
 				return View("Index", new UserViewModel { LoginViewModel = model });
 			}
-			var user = await _context.Users.FirstOrDefaultAsync(l => l.Login == model.Login && l.Password == model.Password);
+			var user = await _context.Agents.FirstOrDefaultAsync(l => l.Login == model.Login && l.Password == model.Password);
 
 			if (user == null)
 			{

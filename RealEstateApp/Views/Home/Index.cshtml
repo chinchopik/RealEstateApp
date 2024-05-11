@@ -1,8 +1,85 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building SOSI HUY</a>.</p>
-</div>
+<body>
+    <div class="homepage d-flex justify-content-between">
+        <div class="textContainer d-flex">
+            <div class="wrapper d-flex flex-column justify-content-lg-start col pt-5">
+                <h1 class="title display-5">Find Real Estate & Get Your Dream Place</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                    explicabo suscipit cum eius, iure est nulla animi consequatur
+                    facilis id pariatur fugit quos laudantium temporibus dolor ea
+                    repellat provident impedit!
+                </p>
+                <button type="button" class="button btn-success rounded shadow border-1"
+                asp-area=""
+                value="Начать!" onclick="location.href='@Url.Action("catalog", "home")'"
+                asp-controller="RealEstate"
+                asp-action="Index">Начать!
+                </button>
+                <div class="boxes d-flex flex-row">
+                    <div class="">
+                        <h1>16+</h1>
+                        <h3>Years of Experience</h3>
+                    </div>
+                    <div class="ml-3">
+                        <h1>200</h1>
+                        <h3>Award Gained</h3>
+                    </div>
+                    <div class="ml-3">
+                        <h1>2000+</h1>
+                        <h3>Property Ready</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="imgContainer d-flex position-relative">
+            <img class="" src="~/resources/bg.png" alt="" />
+        </div>
+    </div>
+</body>
+
+<style type="text/css">
+    .boxes{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .textContainer {
+        flex: 3;
+    }
+
+    .wrapper {
+        padding-right: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        height: 100%;
+    }
+
+    .homePage {
+        display: flex;
+        height: 100%;
+    }
+
+    .imgContainer{
+        flex: 2;
+        background-color: #fcf5f3;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        width: 115%;
+        position: absolute;
+        right: 0;
+    }
+
+
+</style>
+

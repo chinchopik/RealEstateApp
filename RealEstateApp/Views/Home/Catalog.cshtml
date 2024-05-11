@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<div>
+
+</div>
+<div class="searchMenu">
+    <div class="imgContainer">
+       @*  <img class="bgimage" src="~/resources/city.jpg" /> *@
+    </div>
+    <div class="shadow rounded p-3 bg-white">
+        <h1>Поиск</h1>
+        <div class="searchBar">
+            <form asp-action="Search">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="form-floating">
+                            <input
+                                   type="text"
+                                   class="form-control shadow-sm rounded"
+                                   placeholder="Адрес объекта">
+                            <label>Адрес объекта</label>
+                        </div>
+                        <div class="text-danger">@ViewBag.Error</div>
+                    </div>
+                    <div class="dropdown col-3 d-flex">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="estateTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Тип объекта
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="estateTypeDropdown">
+                            <a class="dropdown-item" href="#">Квартира</a>
+                            <a class="dropdown-item" href="#">Земельный участок</a>
+                            <a class="dropdown-item" href="#">Дом</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+</div>
+
+<style>
+    .searchMenu{
+        justify-content:center;
+        align-items:center;
+    }
+    .searchBar{
+        
+    }
+
+    .imgContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+                background-size:cover;
+    }
+    h1{
+        justify-content:center;
+        text-align:center;
+        margin:10px;
+    }
+    .bgimage{
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%;     
+        object-fit:contain
+    }
+</style>
