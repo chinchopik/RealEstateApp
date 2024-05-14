@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RealEstateApp.Domain;
 using RealEstateApp.Domain.Entities;
@@ -50,7 +51,10 @@ namespace RealEstateApp.Controllers
             await _context.RealEstates.AddAsync(new RealEstate
             {
                 Address = realEstateViewModel.Address,
-                Price = realEstateViewModel.Price               
+                Price = realEstateViewModel.Price,
+                TotalArea = realEstateViewModel.TotalArea,
+                NumberOfRooms = realEstateViewModel.NumbersOfRooms,
+                TotalFloors = realEstateViewModel.TotalFloors
             });
 
             await _context.SaveChangesAsync();

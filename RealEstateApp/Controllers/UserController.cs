@@ -31,7 +31,7 @@ namespace RealEstateApp.Controllers
 				return View("Index", new UserViewModel { LoginViewModel = model });
 			}
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Index", "RealEstate");
 		}
 
 	}

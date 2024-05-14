@@ -4,15 +4,24 @@
 
 }
 
-<div class="estate align-items-center p-3 mt-3 rounded d-flex justify-content-start border border-success" data-id="@Model.Id">
-	<div class="d-flex align-items-center col-2">
+<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-between border border-success" data-id="@Model.Id">
+	<div class="d-flex align-items-center">
 		<label class="form-label" asp-for="Id">@Model.Id</label>
 	</div>
-	<div class="col-5">
+	<div >
 		<label class="form-label text-break" asp-for="Address">@Model.Address</label>
 	</div>
-	<div class ="col-3">
+	<div >
 		<label class="form-label" asp-for="Price">@Model.Price</label>
+	</div>
+	<div >
+		<label class="form-label" asp-for="TotalArea">@Model.TotalArea</label>
+	</div>
+	<div >
+		<label class="form-label" asp-for="TotalFloors">@Model.TotalFloors</label>
+	</div>
+	<div >
+		<label class="form-label" asp-for="NumberOfRooms">@Model.NumberOfRooms</label>
 	</div>
 	<div>
 		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">Редактировать
@@ -62,6 +71,36 @@
 						<label asp-for="Price">Цена объекта</label>
 					</div>
 					<span asp-validation-for="Price" class="text-danger"></span>
+					<div class="form-floating mb-3">
+						<input type="number" asp-for="TotalArea"
+							   class="form-control shadow-sm rounded"
+							   min="1"
+							   step="any"
+							   placeholder="Площадь объекта"
+							   id="AreaInput">
+						<label asp-for="TotalArea">Площадь объекта</label>
+					</div>
+					<span asp-validation-for="TotalArea" class="text-danger"></span>
+					<div class="form-floating mb-3">
+						<input type="number" asp-for="TotalFloors"
+							   class="form-control shadow-sm rounded"
+							   min="1"
+							   step="any"
+							   placeholder="Кол-во этажей"
+							   id="FloorsInput">
+						<label asp-for="TotalFloors">Кол-во этажей</label>
+					</div>
+					<span asp-validation-for="TotalFloors" class="text-danger"></span>
+					<div class="form-floating mb-3">
+						<input type="number" asp-for="NumberOfRooms"
+							   class="form-control shadow-sm rounded"
+							   min="1"
+							   step="any"
+							   placeholder="Кол-во комнат"
+							   id="RoomsInput">
+						<label asp-for="NumberOfRooms">Кол-во комнат</label>
+					</div>
+					<span asp-validation-for="NumberOfRooms" class="text-danger"></span>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary p-2" data-bs-dismiss="modal">Закрыть</button>

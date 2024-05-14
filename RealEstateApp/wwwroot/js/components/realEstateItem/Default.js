@@ -1,5 +1,4 @@
 ﻿$('#exampleModal').on('shown.bs.modal', function (event) {
-    alert("1")
     let button = event.relatedTarget
     let userId = button.id
     if (userId) {
@@ -10,6 +9,9 @@
                 modal.find('#IdEstate').val(data.id)
                 modal.find('#AddressInput').val(data.address)
                 modal.find('#PriceInput').val(data.price)
+                modal.find('#AreaInput').val(data.totalArea)
+                modal.find('#FloorsInput').val(data.totalFloors)
+                modal.find('#RoomsInput').val(data.numberOfRooms)
             },
             error: (err) => {
                 alert(err);
@@ -17,6 +19,7 @@
         });
     }
 });
+
 $(function () {
     $("#drop").change(function () {
         var value = this.value;

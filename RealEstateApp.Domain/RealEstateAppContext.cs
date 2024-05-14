@@ -8,11 +8,8 @@ namespace RealEstateApp.Domain
     {
         public virtual DbSet<RealEstate> RealEstates { get; set; }
 		public virtual DbSet<Agent> Agents { get; set; }
-		public virtual DbSet<Apartment> Apartments { get; set; }
 		public virtual DbSet<Client> Clients { get; set; }
 		public virtual DbSet<Deal> Deals { get; set; }
-		public virtual DbSet<House> Houses { get; set; }
-		public virtual DbSet<Land> Lands { get; set; }
 		
 
 		public RealEstateAppContext(DbContextOptions options) : base(options)
