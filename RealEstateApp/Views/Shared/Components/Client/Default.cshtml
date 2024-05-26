@@ -1,0 +1,114 @@
+﻿@using RealEstateApp.Domain.Entities;
+@model Client
+@{
+
+}
+
+<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-between border border-success" data-id="@Model.Id">
+	<div class="d-flex align-items-center">
+		<label class="form-label" asp-for="Id">@Model.Id</label>
+	</div>
+	<div>
+		<label class="form-label text-break" asp-for="LastName">@Model.LastName</label>
+	</div>
+	<div>
+		<label class="form-label" asp-for="FirstName">@Model.FirstName</label>
+	</div>
+	<div>
+		<label class="form-label" asp-for="Patronymic">@Model.Patronymic</label>
+	</div>
+	<div>
+		<label class="form-label" asp-for="Phone">@Model.Phone</label>
+	</div>
+	<div>
+		<label class="form-label" asp-for="Email">@Model.Email</label>
+	</div>
+	<div>
+		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">
+			Редактировать
+		</button>
+		<form asp-controller="Client" asp-action="Delete">
+			@Html.HiddenFor(m => m.Id)
+			<button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить">
+				Удалить
+			</button>
+		</form>
+	</div>
+</div>
+
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="@Model.Id">
+	<form asp-controller="Client" asp-action="Update">
+		<div class="modal-dialog d-flex justify-content-center">
+			<div class="modal-content m-5 d-flex">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-floating disabled mb-3">
+						<input type="text" asp-for="Id"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Идентификатор объекта"
+							   id="IdClient" readonly>
+						<label asp-for="Id">Идентификатор объекта</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="text" asp-for="LastName"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Фамилия"
+							   id="LastNameInput">
+						<label asp-for="LastName">Фамилия</label>
+					</div>
+					<span asp-validation-for="LastName" class="text-danger"></span>
+					<div class="text-danger">@ViewBag.Error</div>
+					<div class="form-floating mb-3">
+						<input asp-for="FirstName"
+							   type="number"
+							   min="1"
+							   step="any"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Имя"
+							   id="FirstNameInput">
+						<label asp-for="FirstName">Имя</label>
+					</div>
+					<span asp-validation-for="FirstName" class="text-danger"></span>
+					<div class="form-floating mb-3">
+						<input type="text" asp-for="Patronymic"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Отчество"
+							   id="PatronymicInput">
+						<label asp-for="Patronymic">Отчество</label>
+					</div>
+					<span asp-validation-for="Patronymic" class="text-danger"></span>
+					<div class="form-floating mb-3">
+						<input type="text" asp-for="Phone"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Номер телефона"
+							   id="PhoneInput">
+						<label asp-for="Phone">Номер телефона</label>
+					</div>
+					<span asp-validation-for="Phone" class="text-danger"></span>
+					<div class="form-floating mb-3">
+						<input type="text" asp-for="Email"
+							   class="form-control shadow-sm rounded"
+							   placeholder="Электронная почта"
+							   id="EmailInput">
+						<label asp-for="Email">Электронная почта</label>
+					</div>
+					<span asp-validation-for="Email" class="text-danger"></span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary p-2" data-bs-dismiss="modal">Закрыть</button>
+					<button type="sumbit" class="btn btn-success">Сохранить изменения</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+
+
