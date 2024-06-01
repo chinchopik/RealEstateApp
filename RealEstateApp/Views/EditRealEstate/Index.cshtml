@@ -1,37 +1,37 @@
 ﻿@using RealEstateApp.Models.RealEstateList;
-@model RealEstateViewModel
+@model EditViewModel
 @{
-    Layout = "~/Views/RealEstate/_RealEstateLayout.cshtml";
+    Layout = "~/Views/EditRealEstate/_RealEstateLayout.cshtml";
     ViewData["Title"] = "RealEstateEmpty";
 }
 
 
 <div class="shadow rounded p-3 mt-5 bg-white">
-    <form asp-action="Create">
+    <form asp-controller="EditRealEstate" asp-action="Create">
         <div class="row">
             <div class="col-6">
                 <div class="form-floating">
-                    <input asp-for="Address"
+                    <input asp-for="RealEstate.Address"
                     type="text"
                     class="form-control shadow-sm rounded"
                     placeholder="Адрес объекта">
-                    <label asp-for="Address">Адрес объекта</label>
+                    <label asp-for="RealEstate.Address">Адрес объекта</label>
                 </div>
-                <span asp-validation-for="Address" class="text-danger"></span>
+                <span asp-validation-for="RealEstate.Address" class="text-danger"></span>
                 <div class="text-danger">@ViewBag.Error</div>
             </div>
 
             <div class="col-4">
                 <div class="form-floating">
-                    <input asp-for="Price"
+                    <input asp-for="RealEstate.Price"
                     type="number"
                     min="1"
                     step="any"
                     class="form-control shadow-sm rounded"
                     placeholder="Цена объекта">
-                    <label asp-for="Price">Цена объекта</label>
+                    <label asp-for="RealEstate.Price">Цена объекта</label>
                 </div>
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <span asp-validation-for="RealEstate.Price" class="text-danger"></span>
             </div>
 
             <div class="col-1 d-flex">
@@ -46,42 +46,42 @@
         <div class="row">
             <div id="areaDiv" class="areaDiv col-2">
                 <div class="form-floating">
-                    <input asp-for="TotalArea" 
+                    <input asp-for="RealEstate.TotalArea"
                            type="number" id="totalAreaInput"
                            min="1"
                            step="any"
                            class="form-control shadow-sm rounded"
                            placeholder="Адрес объекта">
-                    <label asp-for="TotalArea">Площадь</label>
+                    <label asp-for="RealEstate.TotalArea">Площадь</label>
                 </div>
-                <span asp-validation-for="TotalArea" class="text-danger"></span>
+                <span asp-validation-for="RealEstate.TotalArea" class="text-danger"></span>
                 <div class="text-danger">@ViewBag.Error</div>
             </div>
              
             <div id="floorsDiv" class="col-3">
                 <div class="form-floating">
-                    <input asp-for="TotalFloors" 
+                    <input asp-for="RealEstate.TotalFloors"
                            type="number" id="totalFloorsInput"
                            min="1"
                            step="any"
                            class="form-control shadow-sm rounded"
                            placeholder="Цена объекта">
-                    <label asp-for="TotalFloors">Количество этажей</label>
+                    <label asp-for="RealEstate.TotalFloors">Количество этажей</label>
                 </div>
-                <span asp-validation-for="TotalFloors" class="text-danger"></span>
+                <span asp-validation-for="RealEstate.TotalFloors" class="text-danger"></span>
             </div>
              
             <div id="roomsDiv" class="roomsDiv col-3">
                 <div class="form-floating">
-                    <input asp-for="NumbersOfRooms" 
+                    <input asp-for="RealEstate.NumberOfRooms"
                            type="number" id="totalRoomsInput"
                            min="1"
                            step="any"
                            class="form-control shadow-sm rounded"
                            placeholder="Цена объекта">
-                    <label asp-for="NumbersOfRooms">Количество комнат</label>
+                    <label asp-for="RealEstate.NumberOfRooms">Количество комнат</label>
                 </div>
-                <span asp-validation-for="NumbersOfRooms" class="text-danger"></span>
+                <span asp-validation-for="RealEstate.NumberOfRooms" class="text-danger"></span>
             </div>
         </div>
     </form>
@@ -90,19 +90,19 @@
 <h1>Поиск</h1>
 <div class="shadow rounded p-3 bg-white">
     <div class="d-flex flex-row justify-content-between">
-        <form asp-controller="RealEstate"  asp-action="Index">
+        <form asp-controller="EditRealEstate"  asp-action="Index">
             <div class="d-flex flex-row justify-content-between">
                 <div class="d-flex flex-row justify-content-between">
                     <div>
                         <div class="form-floating">
                             <input name="searchString"
-                                   asp-for="Address"
+                                   asp-for="RealEstate.Address"
                                    type="text"
                                    class="form-control shadow-sm rounded"
                                    placeholder="Адрес объекта">
-                            <label asp-for="Address">Адрес объекта</label>
+                            <label asp-for="RealEstate.Address">Адрес объекта</label>
                         </div>
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <span asp-validation-for="RealEstate.Address" class="text-danger"></span>
                         <div class="text-danger">@ViewBag.Error</div>
                     </div>
                     <div class="col-1 d-flex">
@@ -113,7 +113,7 @@
                 </div>                
             </div>
         </form>
-        <form asp-controller="RealEstate" asp-action="Index">
+        <form asp-controller="EditRealEstate" asp-action="Index">
             <div class="d-flex flex-row">
                 <button class="btn d-flex btn-secondary shadows rounded" id="buttonReset" type="submit" data-bs-title="Добавить"
                         data-bs-toggle="tooltip">
@@ -151,10 +151,8 @@
  </div>
 <div class="estates">
     @foreach (var estate in Model.RealEstates)
-    {
-        
+    {        
         @await Component.InvokeAsync("RealEstate", estate);
-        
     }
 </div>
 

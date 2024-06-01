@@ -1,0 +1,131 @@
+﻿@using RealEstateApp.Models.RealEstateList;
+@model CatalogViewModel
+@{
+
+}
+
+
+<div class="singlePage d-flex">
+    <div class="col">
+        <div>      
+            <h1>@Model.RealEstate.Address</h1>
+            <div class="d-flex">
+                <div class="col">
+                    <div>
+                        <p></p>
+                        <div class="crop">
+                            <img src="~/resources/123.jpg"/>
+                        </div>                        
+                    </div>
+                    <p></p>
+                    <h3>Описание</h3>
+                    <div>
+                        <div class="d-flex col">
+                            <span>Адрес: @Model.RealEstate.Address</span>
+                        </div>
+                        <div class="d-flex col">
+                            <span>Цена: @Model.RealEstate.Price рублей</span>
+                        </div>
+                        <div class="d-flex col">
+                            <span>Площадь: @Model.RealEstate.TotalArea кв. м2</span>
+                        </div>
+                        <div class="d-flex col">
+                            <span>Количество комнат: @Model.RealEstate.NumberOfRooms</span>
+                        </div>
+                        <div class="d-flex col">
+                            <span>Этаж: @Model.RealEstate.TotalFloors</span>
+                        </div>
+                    </div>
+                    <p></p>
+                    <h3>Расположение на карте</h3>
+                </div>
+                <div class="col-1"></div>
+                <div class="d-flex col-3 align-items-start p-3 mt-3 rounded justify-content-start border border-success">
+                    <div>
+                        <div class="mb-3 d-flex input-group-text">
+                            <div action="form-floating">
+                                <label class="form-label d-flex">Имя</label>
+                                <input type="text" class="form-control" placeholder="Введите логин" />
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex input-group-text">
+                            <div action="form-floating">
+                                <label class="form-label d-flex">Телефон</label>
+                                <input id="inputTelephone" type="text" class="form-control" data-inputmask-mask="[9-]AAA-999" placeholder="Номер телефона" />
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex input-group-text">
+                            <div action="form-floating">
+                                <label class="form-label d-flex">Имя</label>
+                                <input type="text" class="form-control" placeholder="Введите логин" />
+                            </div>
+                        </div>
+                        <button class="btn btn-success" type="sumbit">Отправить заявку
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="~/js/catalogitem/default.js"></script>
+}
+
+<style>
+    .fillDiv {
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+    }
+
+
+    .singlePage {
+        justify-content:end;
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 0 20px;
+        max-height: 300px;
+    }
+
+    .slick {
+        display: flex;
+        justify-content: end;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .crop {
+        width: 1140px;
+        max-height: 500px;
+        overflow: hidden;
+    }
+
+        .crop img {
+            max-width: 100%;
+            height: 100%;
+        }
+
+    #properties-details {
+        word-wrap: normal;
+    }
+
+    #properties .container {
+        position: relative;
+    }
+
+    .properties-slider img {
+        width: auto;
+        height: auto;
+        display: block;
+        text-decoration: none;
+    }
+</style>

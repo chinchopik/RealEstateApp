@@ -1,0 +1,105 @@
+﻿@using RealEstateApp.Domain.Entities;
+@model RealEstate
+@{
+
+}
+@* <form asp-controller="Home" asp-action="CatalogItem">
+    @Html.HiddenFor(_=>_.Id)
+    <button class="d-block" type="submit" data-id="@Model.Id"> *@
+        <a href="~/home/catalogitem?id=@Model.Id" class="fillDiv">
+            <div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-center border border-success" data-id="@Model.Id">
+                <div class="container d-flex">
+                    <div class="crop col-1">
+                        <img src="~/resources/123.jpg" />
+                    </div>
+                    <div class="col-1">
+                    </div>
+                    <div class="">
+                        <div>
+                            <div class="property-details d-flex justify-content-start row">
+                                <p>@Model.Address</p>
+                                <span class="beds text-wrap text-break">123</span>
+                                <span class="baths">4 baths</span>
+                                <span class="sqft">4,250 sqft.</span>
+                                <address>
+                                    480 12th, Unit 14, San Francisco, CA
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+@*     </button>
+</form> *@
+
+
+
+<script>
+
+</script>
+
+<style>
+    .fillDiv {
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+    }
+    
+
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 20px;
+        max-height:300px;
+    }
+
+    .slick{
+        display:flex;
+
+        justify-content:end;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .crop {
+        width: 500px;
+        max-height:500px;
+        overflow: hidden;
+    }
+
+        .crop img {
+            max-width:500px;
+            height: 200px;
+            
+        }
+    .properties-details {
+        word-wrap:normal;
+    } 
+    
+    p {
+        word-break:break-all;
+    }
+
+    .properties-details p{
+        word-wrap:break-word;
+            word-break: break-all;
+            white-space: normal;
+    }
+
+    #properties .container {
+        position: relative;
+    }
+
+    .properties-slider img {
+        width: auto;
+        height:auto;
+        display: block;
+        text-decoration:none;
+    }
+
+</style>

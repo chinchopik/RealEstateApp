@@ -1,13 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+﻿@using RealEstateApp.Models.RealEstateList;
+@model RealEstateViewModel
+@{
+
 }
+
 <div>
 
 </div>
+<h1>Каталог</h1>
+<p></p>
 <div class="searchMenu">
-    <div class="imgContainer">
-       @*  <img class="bgimage" src="~/resources/city.jpg" /> *@
-    </div>
+   @*  <div class="imgContainer">
+        <img class="bgimage" src="~/resources/city-firstimage.jpg"/>
+    </div> *@
     <div class="shadow rounded p-3 bg-white">
         <h1>Поиск</h1>
         <div class="searchBar">
@@ -23,15 +28,11 @@
                         </div>
                         <div class="text-danger">@ViewBag.Error</div>
                     </div>
-                    <div class="dropdown col-3 d-flex">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="estateTypeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Тип объекта
+                    <div class="col-1 d-flex">
+                        <button class="btn btn-secondary shadows rounded" type="submit" data-bs-title="Добавить"
+                                data-bs-toggle="tooltip">
+                            Поиск
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="estateTypeDropdown">
-                            <a class="dropdown-item" href="#">Квартира</a>
-                            <a class="dropdown-item" href="#">Земельный участок</a>
-                            <a class="dropdown-item" href="#">Дом</a>
-                        </div>
                     </div>
                 </div>
             </form>
@@ -39,11 +40,19 @@
     </div>
     <hr />
 </div>
+<div class="estates">
+    @foreach (var estate in Model.RealEstates)
+    {
+        @await Component.InvokeAsync("RealEstateListItem", estate);
+    }
+</div>
+
 
 <style>
     .searchMenu{
         justify-content:center;
         align-items:center;
+        /* background-image: url("~/resources/city-firstimage.jpg"); */
     }
     .searchBar{
         

@@ -7,11 +7,11 @@ using RealEstateApp.Models.RealEstateList;
 
 namespace RealEstateApp.Controllers
 {
-    public class RealEstateController : BaseController
+    public class EditRealEstateController : BaseController
     {
         private readonly RealEstateAppContext _context;
 
-        public RealEstateController(RealEstateAppContext context)
+        public EditRealEstateController(RealEstateAppContext context)
         {
             _context = context;
         }
@@ -20,13 +20,13 @@ namespace RealEstateApp.Controllers
         {
             if (String.IsNullOrEmpty(searchString))
             {
-                return View(new RealEstateViewModel { RealEstates = await GetRealEstatesAsync() });
+                return View(new EditViewModel { RealEstates = await GetRealEstatesAsync() });
             }
             else
             {
-                var realEstates = new RealEstateViewModel { RealEstates = await GetRealEstatesAsync() };
+                var realEstates = new EditViewModel { RealEstates = await GetRealEstatesAsync() };
                 var query = realEstates.RealEstates.Where(p => p.Address.Contains(searchString)).ToList();
-                return View(new RealEstateViewModel { RealEstates = query});
+                return View(new EditViewModel { RealEstates = query});
             }
         }
 
@@ -40,36 +40,36 @@ namespace RealEstateApp.Controllers
             return await _context.RealEstates.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<IActionResult> CreateAsync(RealEstateViewModel realEstateViewModel)
+        public async Task<IActionResult> CreateAsync(EditViewModel editViewModel)
         {
             if (!ModelState.IsValid)
             {
-                realEstateViewModel.RealEstates = await GetRealEstatesAsync();
-                return View("Index", realEstateViewModel);
+                editViewModel.RealEstates = await GetRealEstatesAsync();
+                return View("Index", editViewModel);
             }
 
             await _context.RealEstates.AddAsync(new RealEstate
             {
-                Address = realEstateViewModel.Address,
-                Price = realEstateViewModel.Price,
-                TotalArea = realEstateViewModel.TotalArea,
-                NumberOfRooms = realEstateViewModel.NumbersOfRooms,
-                TotalFloors = realEstateViewModel.TotalFloors
+                Address = editViewModel.RealEstate.Address,
+                Price = editViewModel.RealEstate.Price,
+                TotalArea = editViewModel.RealEstate.TotalArea,
+                NumberOfRooms = editViewModel.RealEstate.NumberOfRooms,
+                TotalFloors = editViewModel.RealEstate.TotalFloors
             });
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> UpdateAsync(RealEstateViewModel realEstateViewModel)
+        public async Task<IActionResult> UpdateAsync(EditViewModel editViewModel)
         {
-            var estate = await _context.RealEstates.FirstOrDefaultAsync(i=>realEstateViewModel.Id == i.Id);
+            var estate = await _context.RealEstates.FirstOrDefaultAsync(i=> editViewModel.RealEstate.Id == i.Id);
             if(estate != null)
             {
-                if (realEstateViewModel.Address != null)
+                if (editViewModel.RealEstate.Address != null)
                 {
-                    estate.Address = realEstateViewModel.Address;
-                    estate.Price = realEstateViewModel.Price;
+                    estate.Address = editViewModel.RealEstate.Address;
+                    estate.Price = editViewModel.RealEstate.Price;
                     _context.RealEstates.Update(estate);
                     _context.SaveChanges();
                 }

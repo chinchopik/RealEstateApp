@@ -12,12 +12,12 @@ namespace RealEstateApp.Controllers
 
         public IActionResult Clients()
         {
-            return View("~/Views/RealEstate/Clients.cshtml");
+            return View("~/Views/EditRealEstate/Clients.cshtml");
         }
 
         public IActionResult Deals()
         {
-            return View("~/Views/RealEstate/Deals.cshtml");
+            return View("~/Views/EditRealEstate/Deals.cshtml");
         }
 
     }

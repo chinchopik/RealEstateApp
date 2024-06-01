@@ -9,8 +9,6 @@ namespace RealEstateApp.Domain.Entities
         public decimal Price { get; set; }
         public int TotalFloors { get; set; }
         public double TotalArea { get; set; }
-        public int NumberOfRooms { get; set; }
-        
-
+        public int NumberOfRooms { get; set; } 
 	}
 }
