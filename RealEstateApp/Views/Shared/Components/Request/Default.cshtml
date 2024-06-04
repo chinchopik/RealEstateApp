@@ -1,0 +1,69 @@
+﻿@using RealEstateApp.Domain.Entities;
+@model Request
+@{
+
+}
+
+<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-start border border-success" data-id="@Model.Id">
+	<div class="d-flex col">
+		<label class="form-label" asp-for="Id">@Model.Id</label>
+	</div>
+	<div class="d-flex col">
+		<label class="form-label text-break" asp-for="Name">@Model.Name</label>
+	</div>
+	<div class="d-flex col">
+		<label class="form-label" asp-for="Phone">@Model.Phone</label>
+	</div>
+	<div class="d-flex col">
+		<label class="form-label" asp-for="Email">@Model.Email</label>
+	</div>
+	<div class="d-flex col">
+		<label class="form-label" asp-for="RequestDate">@Model.RequestDate</label>
+	</div>
+	<div class="d-flex col">
+		<label id="requestStatus" class="form-label" asp-for="Status">@Model.Status</label>
+	</div>
+	<div class="col">
+		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">
+			Изменить статус
+		</button>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+		<script>
+			var value = $('#requestStatus').value
+				if (@Model.Status.ToString().ToLower() === true) {
+					$('#@Model.Id').attr('disabled', 'disabled');
+				}
+		</script>
+		
+	</div>
+</div>
+
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="@Model.Id">
+	<form asp-controller="Request" asp-action="ChangeRequestStatus">
+		<div class="modal-dialog d-flex justify-content-center">
+			<div class="modal-content m-5 d-flex">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-floating disabled mb-3">
+						<input asp-for="@Model.Id" id="hiddenInput" class="d-block hidden" type="hidden" value="@Model.Id" />
+						<span asp-for="Id" asp-validation-for="Id" data-id="@Model.Id">Вы действительно хотите изменить статус заявки</span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+					<button type="sumbit" class="btn btn-success">Изменить статус</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+
+

@@ -26,22 +26,49 @@ namespace RealEstateApp.Controllers
             return View();
         }
 
-        public async Task<IActionResult> CatalogAsync()
+        public async Task<IActionResult> CatalogAsync(string searchString)
         {
-            return View(new CatalogViewModel { RealEstates = await GetRealEstatesAsync()});
+            if (String.IsNullOrEmpty(searchString))
+            {
+                return View(new CatalogViewModel { RealEstates = await GetRealEstatesAsync() });
+            }
+            else
+            {
+                var realEstates = new CatalogViewModel { RealEstates = await GetRealEstatesAsync() };
+                var query = realEstates.RealEstates.Where(p => p.Address.Contains(searchString)).ToList();
+                return View(new CatalogViewModel { RealEstates = query });
+            }
         }
         public async Task<IActionResult> CatalogItemAsync(int id)
         {
-            return View(new CatalogViewModel { RealEstate = await GetRealEstateAsync(id) });
+            return View(new CatalogViewModel { RealEstate = await GetRealEstateAsync(id)});
         }
         public async Task<RealEstate> GetRealEstateAsync(int id)
         {
             return await _context.RealEstates.FirstOrDefaultAsync(x => x.Id == id);
         }
-
         public async Task<IEnumerable<RealEstate>> GetRealEstatesAsync()
         {
             return await _context.RealEstates.ToListAsync();
+        }
+
+        public async Task<IActionResult> CreateRequestAsync(CatalogViewModel catalogViewModel)
+        {
+            /*if (!ModelState.IsValid) return Redirect($"~/home/catalogitem?id={catalogViewModel.RealEstate.Id}");*/
+
+            if (!catalogViewModel.Request.IsValid()) return Redirect($"~/home/catalogitem?id={catalogViewModel.RealEstate.Id}");
+
+            await _context.Requests.AddAsync(new Request
+            {
+                Name = catalogViewModel.Request.Name,
+                Phone = catalogViewModel.Request.Phone,
+                Email = catalogViewModel.Request.Email,
+                IdRealEstate = catalogViewModel.RealEstate.Id,
+                RequestDate = DateTime.Now,
+                Status = false
+            });
+            await _context.SaveChangesAsync();
+            return Redirect($"~/home/catalogitem?id={catalogViewModel.RealEstate.Id}");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

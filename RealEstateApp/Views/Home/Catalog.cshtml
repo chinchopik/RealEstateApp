@@ -1,5 +1,5 @@
 ﻿@using RealEstateApp.Models.RealEstateList;
-@model RealEstateViewModel
+@model CatalogViewModel
 @{
 
 }
@@ -16,11 +16,12 @@
     <div class="shadow rounded p-3 bg-white">
         <h1>Поиск</h1>
         <div class="searchBar">
-            <form asp-action="Search">
+            <form asp-controller="Home" asp-action="Catalog">
                 <div class="row">
                     <div class="col-5">
                         <div class="form-floating">
-                            <input
+                            <input name="searchString"
+                                   asp-for="@Model.RealEstate.Address"
                                    type="text"
                                    class="form-control shadow-sm rounded"
                                    placeholder="Адрес объекта">

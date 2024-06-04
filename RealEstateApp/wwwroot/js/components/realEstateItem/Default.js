@@ -3,7 +3,7 @@
     let userId = button.id
     if (userId) {
         $.get({
-            url: '/realestate/getrealestate?id=' + userId,
+            url: '/editrealestate/getrealestate?id=' + userId,
             success: (data) => {
                 let modal = $(this)
                 modal.find('#IdEstate').val(data.id)

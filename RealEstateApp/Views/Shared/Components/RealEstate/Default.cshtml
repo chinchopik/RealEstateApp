@@ -4,26 +4,26 @@
 
 }
 
-<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-between border border-success" data-id="@Model.Id">
-	<div class="d-flex align-items-center">
+<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-start border border-success" data-id="@Model.Id">
+	<div class="d-flex col">
 		<label class="form-label" asp-for="Id">@Model.Id</label>
 	</div>
-	<div >
+	<div class="d-flex col">
 		<label class="form-label text-break" asp-for="Address">@Model.Address</label>
 	</div>
-	<div >
+	<div class="d-flex col">
 		<label class="form-label" asp-for="Price">@Model.Price</label>
 	</div>
-	<div >
+	<div class="d-flex col">
 		<label class="form-label" asp-for="TotalArea">@Model.TotalArea</label>
 	</div>
-	<div >
+	<div class="d-flex col">
 		<label class="form-label" asp-for="TotalFloors">@Model.TotalFloors</label>
 	</div>
-	<div >
+	<div class="d-flex col">
 		<label class="form-label" asp-for="NumberOfRooms">@Model.NumberOfRooms</label>
 	</div>
-	<div>
+	<div class="col">
 		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">Редактировать
 			</button>
 		<form asp-controller="RealEstate" asp-action="Delete">

@@ -91,7 +91,7 @@
                                    asp-for="LastName"
                                    type="text"
                                    class="form-control shadow-sm rounded"
-                                   placeholder="Адрес объекта">
+                                   placeholder="Поиск">
                             <label asp-for="LastName">Поиск</label>
                         </div>
                         <span asp-validation-for="LastName" class="text-danger"></span>
@@ -119,26 +119,26 @@
 
 <hr />
 
-<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-between border-bottom">
-    <div class="d-flex align-items-center">
+<div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-start border-bottom">
+    <div class="d-flex col">
         <label class="form-label">Идентификатор</label>
     </div>
-    <div>
+    <div class="d-flex col">
         <label class="form-label">Фамилия</label>
     </div>
-    <div>
+    <div class="d-flex col">
         <label class="form-label">Имя</label>
     </div>
-    <div>
+    <div class="d-flex col">
         <label class="form-label">Отчество</label>
     </div>
-    <div>
+    <div class="d-flex col">
         <label class="form-label">Номер телефона</label>
     </div>
-    <div>
+    <div class="d-flex col">
         <label class="form-label">Электронная почта</label>
     </div>
-    <div>
+    <div class="d-flex col">
         <label class="form-label">Действие</label>
     </div>
 </div>
