@@ -54,7 +54,10 @@ namespace RealEstateApp.Controllers
                 Price = editViewModel.RealEstate.Price,
                 TotalArea = editViewModel.RealEstate.TotalArea,
                 NumberOfRooms = editViewModel.RealEstate.NumberOfRooms,
-                TotalFloors = editViewModel.RealEstate.TotalFloors
+                TotalFloors = editViewModel.RealEstate.TotalFloors,
+                Latitude = editViewModel.RealEstate.Latitude,
+                Longitude = editViewModel.RealEstate.Longitude,
+                Photo = editViewModel.RealEstate.Photo
             });
 
             await _context.SaveChangesAsync();

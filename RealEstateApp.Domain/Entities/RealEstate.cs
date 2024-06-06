@@ -12,6 +12,6 @@ namespace RealEstateApp.Domain.Entities
         public int NumberOfRooms { get; set; } 
         public string Latitude { get; set; }
         public string Longitude { get; set; }
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
 	}
 }
