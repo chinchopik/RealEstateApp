@@ -66,13 +66,16 @@ namespace RealEstateApp.Controllers
 
         public async Task<IActionResult> UpdateAsync(EditViewModel editViewModel)
         {
-            var estate = await _context.RealEstates.FirstOrDefaultAsync(i=> editViewModel.RealEstate.Id == i.Id);
+            var estate = await _context.RealEstates.FirstOrDefaultAsync(i=> editViewModel.Id == i.Id);
             if(estate != null)
             {
-                if (editViewModel.RealEstate.Address != null)
+                if (editViewModel.Address != null)
                 {
-                    estate.Address = editViewModel.RealEstate.Address;
-                    estate.Price = editViewModel.RealEstate.Price;
+                    estate.Address = editViewModel.Address;
+                    estate.Price = editViewModel.Price;
+                    estate.NumberOfRooms = editViewModel.NumberOfRooms;
+                    estate.TotalArea = editViewModel.TotalArea;
+                    estate.TotalFloors = editViewModel.TotalFloors;
                     _context.RealEstates.Update(estate);
                     _context.SaveChanges();
                 }

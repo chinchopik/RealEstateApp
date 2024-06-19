@@ -22,6 +22,9 @@
 	</div>
 	<div class="d-flex col">
 		<label class="form-label" asp-for="NumberOfRooms">@Model.NumberOfRooms</label>
+		<input asp-for="Latitude" type="hidden" />
+		<input asp-for="Longitude" type="hidden" />
+		<input asp-for="Photo" type="hidden" />
 	</div>
 	<div class="crop d-flex col ">
 		<img src="@Model.Photo"/>
@@ -29,12 +32,12 @@
 	<div class="null-column d-flex col">
 	</div>
 	<div class="col">
-		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModalEdit" id="@Model.Id" data-bs-placement="top" title="Редактировать">Редактировать
+		<button type="button" class="btn btn-success edit mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalEdit" id="@Model.Id" data-bs-placement="top" title="Редактировать">Редактировать
 			</button>
-		<button type="button" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#exampleModalMap" id="@Model.Id" data-bs-placement="top" title="Редактировать">
+		<button type="button" class="btn btn-primary edit mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalMap" id="@Model.Id" data-bs-placement="top" title="Редактировать">
 			Расположение
 		</button>
-		<form asp-controller="RealEstate" asp-action="Delete">
+		<form asp-controller="EditRealEstate" asp-action="Delete">
 			@Html.HiddenFor(m=>m.Id)
 			<button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Удалить">Удалить
 			</button>
@@ -44,71 +47,71 @@
 
 <!-- Модальное окно редактирования -->
 <div class="modal fade" id="exampleModalEdit" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="@Model.Id">
-	<form asp-controller="RealEstate" asp-action="Update">
+	<form asp-controller="EditRealEstate" asp-action="Update">
 		<div class="modal-dialog d-flex justify-content-center">
 			<div class="modal-content m-5 d-flex">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Редактирование данных недвижимости</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
 				</div>
 				<div class="modal-body">
 					<div class="form-floating disabled mb-3">
-						<input type="text" asp-for="Id"
+						<input type="text" asp-for="@Model.Id"
 							   class="form-control shadow-sm rounded"
 							   placeholder="Идентификатор объекта"
 							   id="IdEstate" readonly>
-						<label asp-for="Id">Идентификатор объекта</label>
+						<label asp-for="@Model.Id">Идентификатор объекта</label>
 					</div>
 					<div class="form-floating mb-3">
-						<input type="text" asp-for="Address"
+						<input type="text" asp-for="@Model.Address"
 							   class="form-control shadow-sm rounded"
 							   placeholder="Адрес объекта"
 							   id="AddressInput">
-						<label asp-for="Address">Адрес объекта</label>
+						<label asp-for="@Model.Address">Адрес объекта</label>
 					</div>
-					<span asp-validation-for="Address" class="text-danger"></span>
+					<span asp-validation-for="@Model.Address" class="text-danger"></span>
 					<div class="text-danger">@ViewBag.Error</div>
 					<div class="form-floating mb-3">
-						<input asp-for="Price"
+						<input asp-for="@Model.Price"
 							   type="number"
 							   min="1"
 							   step="any"
 							   class="form-control shadow-sm rounded"
 							   placeholder="Цена объекта"
 							   id="PriceInput">
-						<label asp-for="Price">Цена объекта</label>
+						<label asp-for="@Model.Price">Цена объекта</label>
 					</div>
-					<span asp-validation-for="Price" class="text-danger"></span>
+					<span asp-validation-for="@Model.Price" class="text-danger"></span>
 					<div class="form-floating mb-3">
-						<input type="number" asp-for="TotalArea"
+						<input type="number" asp-for="@Model.TotalArea"
 							   class="form-control shadow-sm rounded"
 							   min="1"
 							   step="any"
 							   placeholder="Площадь объекта"
 							   id="AreaInput">
-						<label asp-for="TotalArea">Площадь объекта</label>
+						<label asp-for="@Model.TotalArea">Площадь объекта</label>
 					</div>
-					<span asp-validation-for="TotalArea" class="text-danger"></span>
+					<span asp-validation-for="@Model.TotalArea" class="text-danger"></span>
 					<div class="form-floating mb-3">
-						<input type="number" asp-for="TotalFloors"
+						<input type="number" asp-for="@Model.TotalFloors"
 							   class="form-control shadow-sm rounded"
 							   min="1"
 							   step="any"
 							   placeholder="Кол-во этажей"
 							   id="FloorsInput">
-						<label asp-for="TotalFloors">Кол-во этажей</label>
+						<label asp-for="@Model.TotalFloors">Кол-во этажей</label>
 					</div>
-					<span asp-validation-for="TotalFloors" class="text-danger"></span>
+					<span asp-validation-for="@Model.TotalFloors" class="text-danger"></span>
 					<div class="form-floating mb-3">
-						<input type="number" asp-for="NumberOfRooms"
+						<input type="number" asp-for="@Model.NumberOfRooms"
 							   class="form-control shadow-sm rounded"
 							   min="1"
 							   step="any"
 							   placeholder="Кол-во комнат"
 							   id="RoomsInput">
-						<label asp-for="NumberOfRooms">Кол-во комнат</label>
+						<label asp-for="@Model.NumberOfRooms">Кол-во комнат</label>
 					</div>
-					<span asp-validation-for="NumberOfRooms" class="text-danger"></span>
+					<span asp-validation-for="@Model.NumberOfRooms" class="text-danger"></span>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary p-2" data-bs-dismiss="modal">Закрыть</button>
@@ -125,7 +128,7 @@
 		<div class="modal-dialog d-flex justify-content-center">
 			<div class="modal-content m-5 d-flex">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Расположение недвижимости</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
 				</div>
 				<div class="modal-body">

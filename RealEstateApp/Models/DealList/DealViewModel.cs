@@ -10,8 +10,8 @@ namespace RealEstateApp.Models.DealList
         public int IdClient { get; set; }
         public int IdAgent { get; set; }
         public DateTime Date { get; set; }
-        public virtual Agent Agent { get; set; }
-        public virtual Client Client { get; set; }
-        public virtual RealEstate RealEstate { get; set; }
+        public Agent Agent { get; set; }
+        public Client Client { get; set; }
+        public RealEstate RealEstate { get; set; }
     }
 }

@@ -35,7 +35,7 @@
             alert(lat + ' - ' + lng);
 
             $('#latitudeInput').val(lat);
-            $('#longitudeInput').val(lon);
+            $('#longitudeInput').val(lng);
 
         });
 
@@ -43,7 +43,23 @@
     });
 });
 
+function previewFile() {
+    const file = document.querySelector("input[type=file]").files[0];
+    const reader = new FileReader();
+    if (file) {
+        var base64string = "";
+        reader.onload = function () {
+            base64string = reader.result;
+            $('#photoInput').val(base64string);
+
+            /*alert(base64string);
+            console.log(base64string);*/
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+
 $('#ModalMap').on('hidden.bs.modal', function (event) {
     $(this).find('form').trigger('reset');
-    alert("jopas");
 });

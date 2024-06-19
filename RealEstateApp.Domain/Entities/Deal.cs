@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace RealEstateApp.Domain.Entities
 {
@@ -20,6 +21,7 @@ namespace RealEstateApp.Domain.Entities
 		[ForeignKey("Agent")]
 		public int IdAgent { get; set; }
         public DateTime Date { get; set; }
+
 		public virtual Agent Agent { get; set; }
 		public virtual Client Client { get; set; }
 		public virtual RealEstate RealEstate { get; set; }

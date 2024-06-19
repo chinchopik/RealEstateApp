@@ -1,7 +1,8 @@
-﻿@using RealEstateApp.Domain.Entities;
-@model Client
+﻿@using RealEstateApp.Domain
+@using RealEstateApp.Domain.Entities;
+@model Deal
 @{
-
+	
 }
 
 <div class="estate align-items-center p-3 mt-3 rounded d-flex flex-row justify-content-start border border-success" data-id="@Model.Id">
@@ -9,22 +10,19 @@
 		<label class="form-label" asp-for="Id">@Model.Id</label>
 	</div>
 	<div class="d-flex col">
-		<label class="form-label text-break" asp-for="LastName">@Model.LastName</label>
+		<label class="form-label text-break" asp-for="IdRealEstate">@Model.IdRealEstate</label>
 	</div>
 	<div class="d-flex col">
-		<label class="form-label" asp-for="FirstName">@Model.FirstName</label>
+		<label class="form-label" asp-for="IdClient">@Model.IdClient</label>
 	</div>
 	<div class="d-flex col">
-		<label class="form-label" asp-for="Patronymic">@Model.Patronymic</label>
+		<label class="form-label" asp-for="IdAgent">@Model.IdAgent</label>
 	</div>
 	<div class="d-flex col">
-		<label class="form-label" asp-for="Phone">@Model.Phone</label>
-	</div>
-	<div class="d-flex col">
-		<label class="form-label" asp-for="Email">@Model.Email</label>
-	</div>
+		<label class="form-label" asp-for="Date">@Model.Date</label>
+	</div>@* 
 	<div class="col">
-		<button type="button" class="btn btn-success edit mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">
+		<button type="button" class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#exampleModal" id="@Model.Id" data-bs-placement="top" title="Редактировать">
 			Редактировать
 		</button>
 		<form asp-controller="Client" asp-action="Delete">
@@ -33,10 +31,10 @@
 				Удалить
 			</button>
 		</form>
-	</div>
+	</div> *@
 </div>
 
-<!-- Модальное окно -->
+@* <!-- Модальное окно -->
 <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true" data-id="@Model.Id">
 	<form asp-controller="Client" asp-action="Update">
 		<div class="modal-dialog d-flex justify-content-center">
@@ -50,7 +48,6 @@
 						<input type="text" asp-for="Id"
 							   class="form-control shadow-sm rounded"
 							   placeholder="Идентификатор объекта"
-					
 							   id="IdClient" readonly>
 						<label asp-for="Id">Идентификатор объекта</label>
 					</div>
@@ -104,10 +101,4 @@
 			</div>
 		</div>
 	</form>
-</div>
-
-
-
-
-
-
+</div> *@

@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\Components\Deal\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="wwwroot\resources\123.jpg" />
   </ItemGroup>
 

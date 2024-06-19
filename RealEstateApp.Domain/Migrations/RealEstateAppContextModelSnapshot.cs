@@ -114,8 +114,6 @@ namespace RealEstateApp.Domain.Migrations
 
                     b.HasIndex("IdClient");
 
-                    b.HasIndex("IdRealEstate");
-
                     b.ToTable("Deals");
                 });
 
@@ -190,6 +188,8 @@ namespace RealEstateApp.Domain.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdRealEstate");
+
                     b.ToTable("Requests");
                 });
 
@@ -207,15 +207,18 @@ namespace RealEstateApp.Domain.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Agent");
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("RealEstateApp.Domain.Entities.Request", b =>
+                {
                     b.HasOne("RealEstateApp.Domain.Entities.RealEstate", "RealEstate")
                         .WithMany()
                         .HasForeignKey("IdRealEstate")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Agent");
-
-                    b.Navigation("Client");
 
                     b.Navigation("RealEstate");
                 });

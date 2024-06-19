@@ -21,6 +21,9 @@ namespace RealEstateApp.Domain.Entities
         [ForeignKey("RealEstate")]
         public int IdRealEstate { get; set; }
 
+        public virtual RealEstate RealEstate { get; set; }
+
+
         public bool IsValid() => Name is not null && Phone is not null && Email is not null;
     }
 }

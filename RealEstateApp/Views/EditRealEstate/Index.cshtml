@@ -20,7 +20,6 @@
                 <span asp-validation-for="RealEstate.Address" class="text-danger"></span>
                 <div class="text-danger">@ViewBag.Error</div>
             </div>
-
             <div class="col-4">
                 <div class="form-floating">
                     <input asp-for="RealEstate.Price"
@@ -33,7 +32,6 @@
                 </div>
                 <span asp-validation-for="RealEstate.Price" class="text-danger"></span>
             </div>
-
             <div class="col-1 d-flex">
                 <button class="btn btn-success d-flex shadows rounded"
                         type="submit"
@@ -56,8 +54,7 @@
                 </div>
                 <span asp-validation-for="RealEstate.TotalArea" class="text-danger"></span>
                 <div class="text-danger">@ViewBag.Error</div>
-            </div>
-             
+            </div>             
             <div id="floorsDiv" class="col-3">
                 <div class="form-floating">
                     <input asp-for="RealEstate.TotalFloors"
@@ -93,19 +90,19 @@
                     </button>
                 </div>
                 <span asp-validation-for="RealEstate.NumberOfRooms" class="text-danger"></span>
-                <input id="latitudeInput" type="hidden" asp-for="RealEstate.Latitude" />
-                <input id="longitudeInput" type="hidden" asp-for="RealEstate.Longitude"/>
+                <input id="latitudeInput" type="hidden" asp-for="RealEstate.Latitude"/>
+                <input id="longitudeInput" type="hidden" asp-for="RealEstate.Longitude" />
+                <input id="photoInput" type="hidden" asp-for="RealEstate.Photo" />
             </div>
             <div class="col-1">
             </div>
             <div id="roomsDiv" class="roomsDiv">
                 <div class="form-floating">
-                    <button class="btn btn-success d-flex shadows rounded"
-                            style="text-align:center; margin:auto;" type="button"
-                            data-bs-title="Выбрать фото"
+                    <input class="btn btn-success d-flex shadows rounded"
+                            style="text-align:center; margin:auto;" type="file"
+                           data-bs-title="Выбрать фото" onchange="previewFile()"
                             data-bs-toggle="tooltip">
-                        Выбрать фото
-                    </button>   
+                    </input>   
                 </div>
                 <span asp-validation-for="RealEstate.NumberOfRooms" class="text-danger"></span>
             </div>
@@ -128,7 +125,6 @@
                                    placeholder="Адрес объекта">
                             <label asp-for="RealEstate.Address">Адрес объекта</label>
                         </div>
-                        <span asp-validation-for="RealEstate.Address" class="text-danger"></span>
                         <div class="text-danger">@ViewBag.Error</div>
                     </div>
                     <div class="col-1 d-flex">
@@ -190,11 +186,11 @@
 
 <!-- Модальное окно расположения -->
 <div class="modal fade" id="ModalMap" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form asp-controller="RealEstate" asp-action="Update">
+    <form asp-controller="EditRealEstate" asp-action="Update">
         <div class="modal-dialog d-flex justify-content-center">
             <div class="modal-content m-5 d-flex">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Заголовок модального окна</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Редактирование данных клиента</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div id="modalbodymap" class="modal-body">
